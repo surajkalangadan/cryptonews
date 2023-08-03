@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream/bloc/stream_bloc.dart';
 import 'package:stream/repositry/modelclass/Streammodel.dart';
-import 'package:stream/ui/screen1.dart';
+import 'package:stream/ui/screen2.dart';
 
 class screen1 extends StatefulWidget {
   const screen1({super.key});
@@ -12,7 +12,6 @@ class screen1 extends StatefulWidget {
 }
 
 late List<Streammodel> streams;
-List<String> stm = [];
 
 class _screen1State extends State<screen1> {
   void initState() {
@@ -63,15 +62,26 @@ class _screen1State extends State<screen1> {
                 itemCount: streams.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                      height:290,
+                      height: 325,
                       width: 325,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black),
                           color: Colors.blue),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(height: 50,width: 50,child: Image.asset("asset/bitcoin.png"),),
-                          FittedBox(
+                          Container(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset("asset/bitcoin.png"),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (CTX) => screen2(
+                                        url: streams[index].url.toString(),
+                                      )));
+                            },
                             child: Text(
                               "Title: ${streams[index].title.toString()}",
                               style: TextStyle(
@@ -80,19 +90,25 @@ class _screen1State extends State<screen1> {
                                   color: Colors.black),
                             ),
                           ),
-                          Text(
-                            "description: ${streams[index].description.toString()}",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              "description: ${streams[index].description.toString()}",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
                           ),
-                          Text(
-                            "url: ${streams[index].url.toString()}",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              "url: ${streams[index].url.toString()}",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
                           ),
                           Text(
                             "date: ${streams[index].date.toString()}",
