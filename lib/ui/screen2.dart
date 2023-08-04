@@ -10,14 +10,9 @@ class screen2 extends StatefulWidget {
 
 class _screen2State extends State<screen2> {
     WebViewController _controller=WebViewController();
+
   @override
   Widget build(BuildContext context) {
-
-
-    @override
-    void initState() {
-      super.initState();
-
       _controller = WebViewController()
         ..setJavaScriptMode(JavaScriptMode.unrestricted)
         ..setBackgroundColor(const Color(0x00000000))
@@ -38,8 +33,6 @@ class _screen2State extends State<screen2> {
           ),
         )
         ..loadRequest(Uri.parse(widget.url));
-
-    }
     return Scaffold(body: WebViewWidget(controller: _controller),);
   }
 }

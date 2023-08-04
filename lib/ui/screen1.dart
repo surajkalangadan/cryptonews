@@ -62,7 +62,7 @@ class _screen1State extends State<screen1> {
                 itemCount: streams.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                      height: 325,
+                      height: 400,
                       width: 325,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black),
@@ -86,8 +86,8 @@ class _screen1State extends State<screen1> {
                               "Title: ${streams[index].title.toString()}",
                               style: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
                             ),
                           ),
                           Padding(
